@@ -1,0 +1,25 @@
+# Flask and related libraries
+Flask
+Flask-Cors
+
+# TensorFlow and Keras (for ANN and Transfer Learning)
+tensorflow
+keras
+
+# Hugging Face Transformers (for pre-trained chat or text generation models)
+transformers
+
+# Docker Python client
+docker
+
+# Scikit-learn for preprocessing and metrics
+scikit-learn
+
+# Gunicorn (for deploying Flask on production)
+gunicorn
+
+# Flask-WTF (if using forms in Flask)
+Flask-WTF
+
+# Werkzeug (for better request handling)
+Werkzeug
