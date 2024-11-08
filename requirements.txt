@@ -6,6 +6,11 @@ Flask-Cors
 tensorflow
 keras
 
+# Pandas, seaboarn, and matplotlib for data analyzing.
+pandas
+matplotlib
+seaborn
+
 # Hugging Face Transformers (for pre-trained chat or text generation models)
 transformers
 
