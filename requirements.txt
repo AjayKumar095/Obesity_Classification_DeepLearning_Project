@@ -5,6 +5,7 @@ Flask-Cors
 # TensorFlow and Keras (for ANN and Transfer Learning)
 tensorflow
 keras
+keras-tuner
 
 # Pandas, seaboarn, and matplotlib for data analyzing.
 pandas
