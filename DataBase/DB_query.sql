@@ -18,4 +18,4 @@ CREATE TABLE IF NOT EXISTS HealthData (
     NObeyesdad TEXT
 );
 
-DELETE FROM HealthData;
+
