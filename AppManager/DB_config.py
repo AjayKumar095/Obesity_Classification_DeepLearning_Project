@@ -1,31 +1,29 @@
 ## This file contain methods to config the data base and its query's.
+## main code start here..
 
-## Sample method, not for any use.
-def sample_connect(db_name:str):
-    return f'Connected to {db_name}.'
-    
-
-import re
+import os
 import sqlite3
 import pandas as pd 
 
 class DatabaseManager():
+    __database_path = os.path.join('DataBase', 'TrainingData.db')
     
     def __init__():
         pass
-        
-    def connect_to_database(self, db_name:str):
+    
+    @classmethod
+    def connect_to_database(self):
         
         """_summary_   : This method is use to make connection with the database and
             return the connection object to the caller of this method,
-            This function take one arrgunment as database file path as string.
         """
         try:
-            
-           conn = sqlite3.connect(database=db_name, timeout=10) 
-           return conn   
+           conn = sqlite3.connect(database=self.__database_path, timeout=10) 
+           return conn
         
         except ValueError as e:
             ## add logg here
             conn = None
             return conn
+        
+         
