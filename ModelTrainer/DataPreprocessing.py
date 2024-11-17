@@ -13,12 +13,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from keras.src.utils import to_categorical
 import pandas as pd
-from AppManager.logger import logger
 
 class preprocessing:
     
     pass
 
-
-logger.info('test logging module.')
-logger.debug('someeror')
