@@ -4,21 +4,18 @@ from datetime import datetime
 import logging
 import os
 
-## create the log folder, where all the logs are stored.
-log_folder = os.path.join(os.getcwd(), 'Logs')
 
-if not os.path.exists(log_folder):
-    os.mkdir(log_folder)
+LOG_FILE=f"{datetime.now().strftime('%m_%d_%y_%H_%M_%S')}.log"
+logs_path=os.path.join(os.getcwd(),"logs", LOG_FILE)
+os.makedirs(logs_path, exist_ok=True)
 
 
-## Define the log file path.
-log_filename = datetime.now().strftime('logfile_%Y-%m-%d.log')
-log_file_path = os.path.join(log_folder, log_filename)
+LOG_FILE_PATH=os.path.join(logs_path,LOG_FILE)
 
-## config the basic logger
+
 logging.basicConfig(
-    level=logging.DEBUG,
-    filename=log_file_path,
-    format="[ %(asctime)s ] %(lineno)d %(name)s - %(levelname)s - %(message)s")
-
-logger = logging.getLogger(__name__)
+    
+    filename=LOG_FILE_PATH,
+    format="[ %(asctime)s ]- Line Number:- %(lineno)d %(name)s - %(levelname)s - %(message)s",
+    level=logging.INFO
+)
