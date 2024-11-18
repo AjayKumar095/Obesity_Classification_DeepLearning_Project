@@ -70,11 +70,11 @@ class ModelTraining():
             model.fit(x_train, y_train_hp_cat, epochs=500, batch_size=32, validation_split=0.2, callbacks=[early_stopping])
            
             # Define the path where you want to save the model
-            desired_folder = '../Models'  # Specify your folder here
+            desired_folder = 'Models'  # Specify your folder here
             os.makedirs(desired_folder, exist_ok=True)  # Create the folder if it doesn't exist
 
             # Define the model file path
-            model_file_path = os.path.join(desired_folder, 'ann_model.h5')
+            model_file_path = os.path.join(desired_folder, 'ann_model.keras')
             
             # Save the model in .h5 format 
             logging.info('Save the model in .h5 format t')
