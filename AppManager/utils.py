@@ -3,7 +3,7 @@
 from ast import mod
 import os
 import pickle as pkl
-from AppManager.logger import logging
+from logger import logging
 ## Method to save the model.
 def save_model(object, model_name:str):
     
