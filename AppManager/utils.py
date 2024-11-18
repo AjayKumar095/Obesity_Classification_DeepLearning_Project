@@ -1,9 +1,10 @@
 ### In this file we add some helper functions or methods.
-
-from ast import mod
+import sys
 import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import pickle as pkl
-from logger import logging
+from AppManager.logger import logging
 ## Method to save the model.
 def save_model(object, model_name:str):
     
@@ -32,8 +33,4 @@ def save_model(object, model_name:str):
     except Exception as e:
         logging.info(f'Error occure while saving the model. {e}.')
         
-        
-        
-string='jdsjergurejndv'
-
-save_model(object=string, model_name='testmodel')        
+    
