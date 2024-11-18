@@ -117,8 +117,4 @@ class preprocessing:
         except Exception as e:
             logging.info(f'An error occure while data processing. Error: - {e}')
             return
-
-
-pre_test= preprocessing()
-
-pre_test.preprocess()
+        
