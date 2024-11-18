@@ -112,7 +112,7 @@ class preprocessing:
             
             input_df = pd.DataFrame(df_transformer, columns=inputs_feature_names)
             logging.info(input_df.head(1).to_string)
-            return #(input_df, target)
+            return (input_df, target)
             
         except Exception as e:
             logging.info(f'An error occure while data processing. Error: - {e}')
