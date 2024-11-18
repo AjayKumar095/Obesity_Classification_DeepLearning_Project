@@ -24,7 +24,7 @@ def save_model(object, model_name:str):
         
         else:
             logging.info('Creating the model file.')
-            file_path = os.path.join(model_file_path, f"{model_name}.pkl")
+            file_path = os.path.join(model_file_path, model_name)
             logging.info(file_path)
             with open(file_path, 'wb') as file:
                 pkl.dump(obj=object, file=file)

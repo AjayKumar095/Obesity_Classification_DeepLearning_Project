@@ -16,7 +16,6 @@ from AppManager.logger import logging
 from AppManager.DB_config import DatabaseManager
 from AppManager.utils import save_model
 import pandas as pd
-import sqlite3
 
 class preprocessing:
     
@@ -88,7 +87,7 @@ class preprocessing:
             # Fit the preprocessor on the training data
             # Fit and transform the features
             df_transformer = preprocessor.fit_transform(df)
-            save_model(object=preprocessor, model_name='preprocessor')
+            save_model(object=preprocessor, model_name='preprocessor.pkl')
             
             # replace the targent feature into numerical.
             target = df['NObeyesdad'].replace(target_category_rank)
@@ -115,4 +114,3 @@ class preprocessing:
         except Exception as e:
             logging.info(f'An error occure while data processing. Error: - {e}')
             return
-        
