@@ -44,8 +44,6 @@ class preprocessing:
 
             ordinal_cols = [ 'CALC', 'CAEC']
 
-            target_col = ['NObeyesdad']
-
             ## Building pipeline for data transformation
             logging.info(' Building pipeline for data transformation.')
             # For numerical features: impute with median and scale the data
