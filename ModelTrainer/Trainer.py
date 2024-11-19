@@ -14,7 +14,7 @@ from ModelTrainer.DataPreprocessing import preprocessing
 from sklearn.model_selection import train_test_split
 from keras.src.callbacks import EarlyStopping
 from keras.src.regularizers import L2
-from keras.src.layers import Dense, Dropout
+from keras.src.layers import Dense, Dropout, Input
 from keras.src.utils import to_categorical
 from keras.src.optimizers import Adam
 from keras.src.models import Sequential
@@ -32,10 +32,11 @@ class ModelTraining():
             preprocess = preprocessing()
             
             X, y = preprocess.preprocess()
-            
+            logging.info(f'X feature shape {X.shape}, target shape {y.shape}')
             x_train,  x_test, y_train , y_test =train_test_split(X, y, test_size=0.2, random_state=42)
-            y_train_hp_cat = to_categorical(y_train)
-            y_test_hp_cat = to_categorical(y_test)
+            
+            y_train_hp_cat = to_categorical(y_train,7)
+            y_test_hp_cat = to_categorical(y_test,7)
             
 
             ## Building the ANN model again with L2 regularizers to reduce the Overfitting.
@@ -43,7 +44,8 @@ class ModelTraining():
             model=Sequential()
 
             ## Input layer
-            model.add(Dense(32, activation='relu', input_shape=(x_train.shape[1],), kernel_regularizer=L2(0.001) ))
+            model.add(Input(shape=(x_train.shape[1],))) 
+            model.add(Dense(32, activation='relu', kernel_regularizer=L2(0.001) ))
 
             ## hidden and dropout layer 1
             model.add(Dense(224, activation='relu', kernel_regularizer=L2(0.001)))

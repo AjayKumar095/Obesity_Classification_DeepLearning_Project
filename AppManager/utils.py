@@ -1,5 +1,5 @@
 ### In this file we add some helper functions or methods.
-from pyexpat import model
+
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -68,18 +68,21 @@ class LoadModel():
         return model
     
 
-conn = sqlite3.connect('DataBase/TrainingData.db')
+#conn = sqlite3.connect('DataBase/TrainingData.db')
 
 
-df = pd.read_sql_query("SELECT * FROM HealthData LIMIT 1;", conn)
+#df = pd.read_sql_query("SELECT * FROM HealthData LIMIT 1;", conn)
 
-input_data = df.iloc[:,:-1]
+#input_data = df.iloc[:,:-1]
+#
+#models= LoadModel()
 
-input_data = np.array(input_data)
+#process = models.load_preprocessor()
 
-models= LoadModel()
+#processed_data = process.transform(input_data)
+#print(processed_data)
 
-process = models.load_preprocessor()
+#model = models.load_model()
 
-processed_data = process.transform(input_data)
-print(processed_data)
+#pred = model.predict(processed_data)
+#print(pred)
