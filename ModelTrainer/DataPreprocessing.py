@@ -35,14 +35,16 @@ class preprocessing:
             df = pd.read_sql_query(query, conn)
             logging.info(f'{df.head(1).to_string()}')
             
+            input_df = df.iloc[:,:-1]
             ## Defining the numerical, ordinal and nominal features.
             logging.info(' Defining the numerical, ordinal and nominal features.')
-            num_cols = [col for col in df.columns if df[col].dtype != 'object']
+            num_cols = [col for col in input_df.columns if input_df[col].dtype != 'object']
 
             nominal_cols = ['Gender', 'family_history_with_overweight', 'FAVC', 'SMOKE', 'SCC', 'MTRANS']
 
             ordinal_cols = [ 'CALC', 'CAEC']
-
+            
+            logging.info(f'{num_cols.len()}, {nominal_cols.len()}, {ordinal_cols.len()}')
             ## Building pipeline for data transformation
             logging.info(' Building pipeline for data transformation.')
             # For numerical features: impute with median and scale the data
@@ -86,7 +88,7 @@ class preprocessing:
             
             # Fit the preprocessor on the training data
             # Fit and transform the features
-            df_transformer = preprocessor.fit_transform(df)
+            df_transformer = preprocessor.fit_transform(input_df)
             save_model(object=preprocessor, model_name='preprocessor.pkl')
             
             # replace the targent feature into numerical.
@@ -107,10 +109,15 @@ class preprocessing:
             inputs_feature_names = num_feature_names + nominal_feature_names.tolist() + ordinal_feature_names
 
             
-            input_df = pd.DataFrame(df_transformer, columns=inputs_feature_names)
-            logging.info(input_df.head(1).to_string)
-            return (input_df, target)
+            Input_df = pd.DataFrame(df_transformer, columns=inputs_feature_names)
+            logging.info(Input_df.head(1).to_string)
+            return (Input_df, target)
             
         except Exception as e:
             logging.info(f'An error occure while data processing. Error: - {e}')
             return
+
+
+test = preprocessing()
+
+test.preprocess()
