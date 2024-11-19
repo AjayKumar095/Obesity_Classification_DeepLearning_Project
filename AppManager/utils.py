@@ -66,23 +66,3 @@ class LoadModel():
         model = keras.models.load_model(filepath=file_path)
         
         return model
-    
-
-#conn = sqlite3.connect('DataBase/TrainingData.db')
-
-
-#df = pd.read_sql_query("SELECT * FROM HealthData LIMIT 1;", conn)
-
-#input_data = df.iloc[:,:-1]
-#
-#models= LoadModel()
-
-#process = models.load_preprocessor()
-
-#processed_data = process.transform(input_data)
-#print(processed_data)
-
-#model = models.load_model()
-
-#pred = model.predict(processed_data)
-#print(pred)
