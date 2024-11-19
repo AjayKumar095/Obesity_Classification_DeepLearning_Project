@@ -60,7 +60,7 @@ class ModelTraining():
             model.add(Dropout(0.4))
 
             ## Output Layer.
-            model.add(Dense(8, activation='softmax'))
+            model.add(Dense(7, activation='softmax'))
 
 
 
@@ -97,6 +97,3 @@ class ModelTraining():
             return
 
 
-test_train = ModelTraining()
-
-print(test_train.train_model())
