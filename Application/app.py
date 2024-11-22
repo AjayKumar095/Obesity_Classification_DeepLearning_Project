@@ -68,13 +68,13 @@ def predict():
         
         
         target_category_rank = {
-                'Normal_Weight': 0,
-                'Insufficient_Weight': 1,
-                'Overweight_Level_I': 2,
-                'Overweight_Level_II': 3,
-                'Obesity_Type_I': 4,
-                'Obesity_Type_II': 5,
-                'Obesity_Type_III': 6
+                'Normal Weight': 0,
+                'Insufficient Weight': 1,
+                'Overweight Level I': 2,
+                'Overweight Level II': 3,
+                'Obesity Type I': 4,
+                'Obesity Type II': 5,
+                'Obesity Type III': 6
             }
         # Step 2: Reverse the dictionary
         rank_to_category = {v: k for k, v in target_category_rank.items()}
@@ -84,8 +84,8 @@ def predict():
        # Step 5: Map the index to the class label
         predicted_category = rank_to_category[predicted_rank]
         
-        obesity_percentage=(predicted_rank/7)*100
-        logging.info(f'predicted category {predicted_category}')
+        obesity_percentage=(predicted_rank+1/8)*100
+        logging.info(f'predicted category {predicted_category}, {predicted_rank}')
         
         return render_template('index.html', level=obesity_percentage, obesity_class=predicted_category)
 
