@@ -5,47 +5,11 @@ This project implements an Artificial Neural Network (ANN) model to classify obe
 ---
 
 Table of Contents:
-1. Project Structure
-2. Technologies & Requirements
-3. Installation & Setup
-4. Usage
-5. Links & Resources
+1. Technologies & Requirements
+2. Installation & Setup
+3. Usage
+4. Links & Resources
 
----
-
-Project Structure:
-
-Here’s the folder structure of the project:
-
-Obesity-Classification/
-│
-├── Application/                  # Flask web application
-│   ├── app.py                     # Main Flask app
-│   ├── Modules/                   # Custom modules used in the app
-│   ├── static/                    # Static files (CSS, JS, images)
-│   └── Templates/                 # HTML templates
-│
-├── AppManager/                  # Utility functions for the app
-│   ├── utils.py                  # Utility functions
-│   ├── DB_config.py              # Database configuration
-│   └── logger.py                 # Logging configuration
-│
-├── ModelTrainer/                # Model training pipeline
-│   ├── DatapreProcessing.py      # Data preprocessing script
-│   └── Trainer.py                # Model training script
-│
-├── Models/                       # Stored model files
-│   └── ann_model.keras 
-|   |__ preprocessor.pkl          # Trained model pickle file
-│
-├── Research/                                 # Jupyter notebooks for research & data analysis
-│   └── HyperPerimeterTuning.ipynb            # Data analysis notebook
-│
-└── Database/                      # SQLite database files
-    ├── DB_query.sql               # Database file
-    └── TrainingData.db            # SQL schema file
-
----
 
 Technologies & Requirements:
 
@@ -81,7 +45,7 @@ Installation & Setup:
 To get this project up and running on your local machine:
 
 1. Clone the repository:
-    git clone https://github.com/yourusername/obesity-classification.git
+    git clone https://github.com/AjayKumar095/Obesity_Classification_DeepLearning_Project.git
     cd obesity-classification
 
 2. Create a virtual environment (optional but recommended):
