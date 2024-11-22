@@ -1,6 +1,8 @@
 # Add the root directory to the sys.path
+import re
 import sys
 import os
+from turtle import color
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -9,50 +11,83 @@ from AppManager.DB_config import DatabaseManager
 from AppManager.logger import logging
 from AppManager.utils import LoadModel
 import pandas as pd 
+import numpy as np
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    
-    return render_template('index.html')
+    try:
+        logging.info('rendering index page')
+        return render_template('index.html')
+    except Exception as e:
+        logging.info(f'Haing some error while rendering index page. Error:- {e}')
+        return """<h1 style="color:red"><center>404 Page Not Found !!!</center></h1>"""
 
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
     if request.method != 'POST':
-        return redirect('index')
+        logging.info('Form methos does not match to post.')
+        return render_template('index.html')
     
     else :
+        logging.info('Collecting data from frontend.')
         data = {
             'Gender': request.form.get('Gender'),
-             'Age':request.form.get('Age'),
-             'Height':request.form.get('Height'),
-             'Weight':request.form.get('Weight'),
+             'Age': float(request.form.get('Age')),
+             'Height': float(request.form.get('Height')),
+             'Weight': float(request.form.get('Weight')),
             'family_history_with_overweight':request.form.get('family_history_with_overweight'),  
              'FAVC':request.form.get('FAVC'),
-              'FCVC':request.form.get('FCVC'), 
-             'NCP':request.form.get('NCP'),
+              'FCVC':float(request.form.get('FCVC')), 
+             'NCP':float(request.form.get('NCP')),
               'CAEC':request.form.get('CAEC'),
               'SMOKE':request.form.get('SMOKE'),
-              'CH2O':request.form.get('CH2O'),
+              'CH2O':float(request.form.get('CH2O')),
               'SCC':request.form.get('SCC'),
-              'FAF':request.form.get('FAF'),
-              'TUE':request.form.get('TUE'),
+              'FAF':float(request.form.get('FAF')),
+              'TUE':float(request.form.get('TUE')),
               'CALC':request.form.get('CALC'),
              'MTRANS':request.form.get('MTRANS'),
         }
-        logging.info(data)
-        df= pd.DataFrame(data=data)
+        logging.info("Collected data",data)
+        df= pd.DataFrame(data=data, index=[0])
         model=LoadModel()
         
+        logging.info('Preprocessing the collecting data.')
         preprocessor=model.load_preprocessor()
         process_data = preprocessor.transform(df)
         logging.info(f'processed data{process_data}')
-        #ANN_model = model.load_model()
         
-        #predicted_value_list=ANN_model.predict(process_data)
-        return redirect('index')
+        logging.info('Loading the ANN model.')
+        ANN_model = model.load_model()
+        logging.info('Predicting obesity level on collectd data.')
+        predicted_value_list=ANN_model.predict(process_data)
+        logging.info(f'predicted value {predicted_value_list}')
+        
+        
+        target_category_rank = {
+                'Normal_Weight': 0,
+                'Insufficient_Weight': 1,
+                'Overweight_Level_I': 2,
+                'Overweight_Level_II': 3,
+                'Obesity_Type_I': 4,
+                'Obesity_Type_II': 5,
+                'Obesity_Type_III': 6
+            }
+        # Step 2: Reverse the dictionary
+        rank_to_category = {v: k for k, v in target_category_rank.items()}
+        # Step 4: Get the index of the maximum probability
+        predicted_rank = np.argmax(predicted_value_list[0])
+
+       # Step 5: Map the index to the class label
+        predicted_category = rank_to_category[predicted_rank]
+        
+        obesity_percentage=(predicted_rank/7)*100
+        logging.info(f'predicted category {predicted_category}')
+        
+        return render_template('index.html', level=obesity_percentage, obesity_class=predicted_category)
 
 if __name__== "__main__":
     app.run(debug=True, host="0.0.0.0")
