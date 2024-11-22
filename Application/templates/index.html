@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <title>WeightGuard</title>
+    <!--Your Personal Health Monitor: Assess Obesity Risks Instantly with WeightGuard-->
+    
+</head>
+<body >
+
+  <div class=" container-fluid pb-3 ps-3 pt-0 custom_header">
+    <img src="{{url_for('static', filename='Assets/applogo.png')}}" alt="logo"  width="175" height="175">
+  </div>
+  
+  <div class="p-2 rounded-circle robot">
+    <img src="{{url_for('static', filename='Assets/AI_face_image.png')}}" alt="AI robot face" class="img-fluid">
+  </div>
+
+    <div class="container p-0 mt-4 custom_margin" >
+      <div class="row m-1">
+        <div class="col-md align-content-center">
+          <h2 class="h2">WeightGuard</h2>
+          <p class=" text-body-emphasis">WeightGuard leverages cutting-edge artificial
+             intelligence to assess obesity levels with precision and deliver tailored health
+              tips to individuals. By analyzing various health metrics and lifestyle patterns,
+               WeightGuard offers actionable recommendations designed to help users effectively
+                manage their weight.</p>
+          <a href="#form_check" class="btn btn-lg  btn-outline-warning" >Check Now</a>
+        </div>
+        <div class="col-md">
+          <img  src="{{url_for('static', filename='Assets/webgraphics.png')}}" alt="img" class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+
+    <!--Form div -->
+    <div class="container mt-4" id="form_check">
+      <h2 class="text-center">Health Data Form</h2>
+      <form>
+            <!-- Row 1 -->
+            <div class="row mb-3">
+              <div class="col-md-3">
+                  <label for="gender" class="form-label">Gender</label>
+                  <select id="gender" class="form-select" required>
+                      <option value="" disabled selected>Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                  </select>
+              </div>
+              <div class="col-md-3">
+                  <label for="age" class="form-label">Age</label>
+                  <input type="number" id="age" class="form-control" placeholder="Enter age" min="0" max="120" required>
+              </div>
+              <div class="col-md-3">
+                  <label for="height" class="form-label">Height (m)</label>
+                  <input type="number" step="0.01" id="height" class="form-control" placeholder="Enter height" min="0.5" max="2.5" required>
+              </div>
+              <div class="col-md-3">
+                  <label for="weight" class="form-label">Weight (kg)</label>
+                  <input type="number" step="0.01" id="weight" class="form-control" placeholder="Enter weight" min="2" max="200" required>
+              </div>
+          </div>
+          <!-- Row 2 -->
+          <div class="row mb-3">
+              <div class="col-md-3">
+                  <label for="familyHistory" class="form-label">Family History with Overweight</label>
+                  <select id="familyHistory" class="form-select" required>
+                      <option value="" disabled selected>Select an option</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                  </select>
+              </div>
+              <div class="col-md-3">
+                  <label for="favc" class="form-label">High-Calorie Food Consumption (FAVC)</label>
+                  <select id="favc" class="form-select" required>
+                      <option value="" disabled selected>Select an option</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                  </select>
+              </div>
+              <div class="col-md-3">
+                  <label for="fcvc" class="form-label">Vegetable Consumption Frequency (FCVC)</label>
+                  <input type="number" step="0.1" id="fcvc" class="form-control" placeholder="Scale (e.g., 1-5)" min="0" max="5" required>
+              </div>
+              <div class="col-md-3">
+                  <label for="ncp" class="form-label">Number of Main Meals (NCP)</label>
+                  <input type="number" id="ncp" class="form-control" placeholder="Enter meals per day" min="1" max="6" required>
+              </div>
+          </div>
+          <!-- Row 3 -->
+          <div class="row mb-3">
+              <div class="col-md-3">
+                  <label for="caec" class="form-label">Food Consumption Between Meals (CAEC)</label>
+                  <select id="caec" class="form-select" required>
+                      <option value="" disabled selected>Select Frequency</option>
+                      <option value="no">No</option>
+                      <option value="Sometimes">Sometimes</option>
+                      <option value="Frequently">Frequently</option>
+                      <option value="Always">Always</option>
+                  </select>
+              </div>
+              <div class="col-md-3">
+                  <label for="smoke" class="form-label">Smoking Habit (SMOKE)</label>
+                  <select id="smoke" class="form-select" required>
+                      <option value="" disabled selected>Select an option</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                  </select>
+              </div>
+              <div class="col-md-3">
+                  <label for="ch2o" class="form-label">Daily Water Consumption (CH2O)</label>
+                  <input type="number" step="0.1" id="ch2o" class="form-control" placeholder="Liters" min="0.1" max="10" required>
+              </div>
+              <div class="col-md-3">
+                  <label for="scc" class="form-label">Calorie Consumption Monitoring (SCC)</label>
+                  <select id="scc" class="form-select" required>
+                      <option value="" disabled selected>Select an option</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                  </select>
+              </div>
+          </div>
+          <!-- Row 4 -->
+          <div class="row mb-3">
+              <div class="col-md-3">
+                  <label for="faf" class="form-label">Physical Activity Frequency (FAF)</label>
+                  <input type="number" id="faf" class="form-control" placeholder="Times per week" min="0" max="7" required>
+              </div>
+              <div class="col-md-3">
+                  <label for="tue" class="form-label">Time Using Electronics (TUE)</label>
+                  <input type="number" step="0.1" id="tue" class="form-control" placeholder="Hours per day" min="0" max="24" required>
+              </div>
+              <div class="col-md-3">
+                  <label for="calc" class="form-label">Alcohol Consumption (CALC)</label>
+                  <select id="calc" class="form-select" required>
+                      <option value="" disabled selected>Select Frequency</option>
+                      <option value="no">No</option>
+                      <option value="Sometimes">Sometimes</option>
+                      <option value="Frequently">Frequently</option>
+                      <option value="Always">Always</option>
+                  </select>
+              </div>
+              <div class="col-md-3">
+                  <label for="mtrans" class="form-label">Primary Transportation (MTRANS)</label>
+                  <select id="mtrans" class="form-select" required>
+                      <option value="" disabled selected>Select Mode</option>
+                      <option value="Public_Transportation">Public Transportation</option>
+                      <option value="Walking">Walking</option>
+                      <option value="Automobile">Automobile</option>
+                      <option value="Motorbike">Motorbike</option>
+                      <option value="Bike">Bike</option>
+                  </select>
+              </div>
+          </div>
+
+
+          <!-- Row 5 -->
+           <div class=" row mb-3 ">
+            <div class="col-auto">
+              <button type="rest" class="btn btn-lg btn-warning">Reset</button>
+          </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+          </div>
+           </div>
+      </form>
+  </div>
+
+  <!--Predection div -->
+       <div class=" container-fluid">
+        <div class=" container align-content-center">
+          <h1 class="h1"><center>Obesity Level</center></h1>
+          
+          <div class="progress" style='height:30px' role="progressbar" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar custom_header" style="width: 14%"><p class="m-1 text-body-emphasis"><b>Normal Weight</b></p></div>
+          </div>
+        </div>
+
+        <div class=" container align-content-center p-2 mt-4">
+          <h2 class="h3">Health tips for you according to above result.</h2>
+          some decription for the obesity level
+     </div>
+       </div>
+
+    <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+              <p class="col-md-4 mb-0 text-body-secondary">&copy; 2024 Company, Inc</p>
+          
+              <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img src="{{url_for('static', filename='Assets/webgraphics.png')}}" alt="logo" width="100" height="100">
+              </a>
+            </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+.robot {
+    border: 1px solid rgb(65, 250, 65);
+    box-shadow: 0px 0px 50px rgba(65, 250, 65, 1); /* Simple shadow */
+    width: 170px;
+    height: 170px;
+    background: #ffffff;
+    z-index: 3;
+    position: absolute;
+
+    /* Center horizontally */
+    left: 50%;
+    /* Center vertically */
+    
+    /* Translate back by 50% of its own width and height */
+    transform: translate(-50%, -50%);
+}
+.custom_header {
+  background: linear-gradient(220deg, #12c2e9, #c471ed, #f64f59, yellow);
+  background-size: 600% 600%;
+
+  -webkit-animation: gradient-box 10s ease infinite;
+  -moz-animation: gradient-box 10s ease infinite;
+  -o-animation: gradient-box 10s ease infinite;
+  animation: gradient-box 10s ease infinite;
+}
+
+@-webkit-keyframes gradient-box {
+  0%{background-position:0% 76%}
+  50%{background-position:100% 25%}
+  100%{background-position:0% 76%}
+}
+@-moz-keyframes gradient-box {
+  0%{background-position:0% 76%}
+  50%{background-position:100% 25%}
+  100%{background-position:0% 76%}
+}
+@-o-keyframes gradient-box {
+  0%{background-position:0% 76%}
+  50%{background-position:100% 25%}
+  100%{background-position:0% 76%}
+}
+@keyframes gradient-box {
+  0%{background-position:0% 76%}
+  50%{background-position:100% 25%}
+  100%{background-position:0% 76%}
+}
+
+
+@media (max-width: 767px) {
+  .custom_margin {
+      margin-top: 100px !important;
+    
+  }
+  .robot {
+    width: 130px;
+    height: 130px;
+  }
+}
