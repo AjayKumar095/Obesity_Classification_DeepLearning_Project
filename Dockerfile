@@ -1,18 +1,22 @@
-# Use the official Python image
+# Step 1: Use a Python base image
 FROM python:3.8-slim
 
-# Set the working directory
+# Step 2: Set working directory to /app
 WORKDIR /app
 
-# Install dependencies
-COPY requirements.txt /app/
+# Step 3: Copy the entire project into the /app directory in the container
+COPY . /app
+
+# Step 4: Install Python dependencies from the requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the application code
-COPY . /app/
-
-# Expose the port on which the app will run
+# Step 5: Expose port 5000 (Flask default port)
 EXPOSE 5000
 
-# Run the application using Gunicorn
+# Step 6: Set environment variables for Flask
+ENV FLASK_APP=Application.app:app
+ENV FLASK_ENV=production
+
+# Step 7: Set the command to run Gunicorn with your Flask app
 CMD ["gunicorn", "Application.app:app", "-b", "0.0.0.0:5000"]
+
