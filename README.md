@@ -114,7 +114,7 @@ Usage:
 Links & Resources:
 
 - Docker Image: [Docker Image Repository](https://hub.docker.com/repository/docker/yourusername/obesity-classification)
-- LinkedIn: [My LinkedIn Profile](https://www.linkedin.com/in/your-profile)
+- LinkedIn: [My LinkedIn Profile](https://www.linkedin.com/in/ajay-kumar-4b1b7329a/)
 
 ---
 
@@ -122,10 +122,10 @@ Images:
 
 Here are some screenshots from the project:
 
-![Obesity Prediction Form](images/obesity-form.png)
+![Obesity Prediction Form](Application\static\Assets\projectimage1.png)
 *Obesity prediction form where users enter their data.*
 
-![Obesity Prediction Result](images/prediction-result.png)
+![Obesity Prediction Result](Application\static\Assets\projectimage2.png)
 *Result page showing the predicted obesity level.*
 
 ---
