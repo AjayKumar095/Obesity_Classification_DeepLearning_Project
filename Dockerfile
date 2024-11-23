@@ -8,7 +8,9 @@ WORKDIR /app
 COPY . /app
 
 # Step 4: Install Python dependencies from the requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# Update pip and install dependencies
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
 # Step 5: Expose port 5000 (Flask default port)
 EXPOSE 5000
